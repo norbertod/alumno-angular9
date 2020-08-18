@@ -19,7 +19,8 @@ import com.formacionbdi.microservicios.commons.controllers.CommonController;
 @RestController
 public class AlumnoController extends CommonController<Alumno, AlumnoService>{
 	
-
+//cambios desde origin
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> editar (@RequestBody Alumno alumno, @PathVariable Long id){
 		Optional<Alumno> o = service.findById(id);
