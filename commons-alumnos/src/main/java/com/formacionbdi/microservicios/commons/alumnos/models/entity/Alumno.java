@@ -7,10 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "alumnos")
@@ -28,10 +31,17 @@ public class Alumno {
 	private String email;
 	@Column(name="create_at")
 	private Date createAt;
+	@Lob
+	@JsonIgnore
+	private byte[] foto;
 	
 	@PrePersist
-	public void prePersist() {
+	public void prePersist() { 
 		this.createAt = new Date();
+	}
+	
+	public Integer getFotoHashcode() {
+		return (this.foto != null) ? this.foto.hashCode(): null;
 	}
 
 	public Long getId() {
@@ -72,6 +82,16 @@ public class Alumno {
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
+	}
+	
+	
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 	@Override
