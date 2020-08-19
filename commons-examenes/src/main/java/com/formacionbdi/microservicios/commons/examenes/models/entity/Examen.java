@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -38,8 +39,10 @@ public class Examen {
 	@OneToMany(mappedBy = "examen",fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Pregunta> preguntas;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Asignatura asignaturas;
 	
-	
+
 	public Examen() {
 		this.preguntas = new ArrayList<>();
 	}
@@ -91,6 +94,16 @@ public class Examen {
 	public void removePregunta(Pregunta pregunta) {
 		pregunta.setExamen(null);
 		this.preguntas.remove(pregunta);
+	}
+	
+	
+
+	public Asignatura getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(Asignatura asignaturas) {
+		this.asignaturas = asignaturas;
 	}
 
 	@Override

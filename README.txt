@@ -106,3 +106,329 @@
     }
 ]
 --asignar examenes a un curso----
+
+--asignaturas--
+
+[
+    {
+        "id": 1,
+        "nombre": "Matemáticas",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 8,
+                "nombre": "Algebra",
+                "hijos": []
+            },
+            {
+                "id": 9,
+                "nombre": "Aritmética",
+                "hijos": []
+            },
+            {
+                "id": 10,
+                "nombre": "Trigonometría",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nombre": "Lenguaje",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 11,
+                "nombre": "Lectura y comprensión",
+                "hijos": []
+            },
+            {
+                "id": 12,
+                "nombre": "Verbos",
+                "hijos": []
+            },
+            {
+                "id": 13,
+                "nombre": "Gramática",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "nombre": "Inglés",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 14,
+                "nombre": "Inglés",
+                "hijos": []
+            },
+            {
+                "id": 15,
+                "nombre": "Gramática",
+                "hijos": []
+            },
+            {
+                "id": 16,
+                "nombre": "Verbos",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "nombre": "Ciencias Naturales",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 17,
+                "nombre": "Ciencias Naturales",
+                "hijos": []
+            },
+            {
+                "id": 18,
+                "nombre": "Biología",
+                "hijos": []
+            },
+            {
+                "id": 19,
+                "nombre": "Física",
+                "hijos": []
+            },
+            {
+                "id": 20,
+                "nombre": "Quimica",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "nombre": "Ciencias Sociales y Historia",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 21,
+                "nombre": "Historia",
+                "hijos": []
+            },
+            {
+                "id": 22,
+                "nombre": "Ciencias Sociales",
+                "hijos": []
+            },
+            {
+                "id": 23,
+                "nombre": "Filosofía",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "nombre": "Música",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 24,
+                "nombre": "Música",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "nombre": "Artes",
+        "padre": null,
+        "hijos": [
+            {
+                "id": 25,
+                "nombre": "Artes",
+                "hijos": []
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "nombre": "Algebra",
+        "padre": {
+            "id": 1,
+            "nombre": "Matemáticas",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 9,
+        "nombre": "Aritmética",
+        "padre": {
+            "id": 1,
+            "nombre": "Matemáticas",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 10,
+        "nombre": "Trigonometría",
+        "padre": {
+            "id": 1,
+            "nombre": "Matemáticas",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 11,
+        "nombre": "Lectura y comprensión",
+        "padre": {
+            "id": 2,
+            "nombre": "Lenguaje",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 12,
+        "nombre": "Verbos",
+        "padre": {
+            "id": 2,
+            "nombre": "Lenguaje",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 13,
+        "nombre": "Gramática",
+        "padre": {
+            "id": 2,
+            "nombre": "Lenguaje",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 14,
+        "nombre": "Inglés",
+        "padre": {
+            "id": 3,
+            "nombre": "Inglés",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 15,
+        "nombre": "Gramática",
+        "padre": {
+            "id": 3,
+            "nombre": "Inglés",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 16,
+        "nombre": "Verbos",
+        "padre": {
+            "id": 3,
+            "nombre": "Inglés",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 17,
+        "nombre": "Ciencias Naturales",
+        "padre": {
+            "id": 4,
+            "nombre": "Ciencias Naturales",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 18,
+        "nombre": "Biología",
+        "padre": {
+            "id": 4,
+            "nombre": "Ciencias Naturales",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 19,
+        "nombre": "Física",
+        "padre": {
+            "id": 4,
+            "nombre": "Ciencias Naturales",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 20,
+        "nombre": "Quimica",
+        "padre": {
+            "id": 4,
+            "nombre": "Ciencias Naturales",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 21,
+        "nombre": "Historia",
+        "padre": {
+            "id": 5,
+            "nombre": "Ciencias Sociales y Historia",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 22,
+        "nombre": "Ciencias Sociales",
+        "padre": {
+            "id": 5,
+            "nombre": "Ciencias Sociales y Historia",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 23,
+        "nombre": "Filosofía",
+        "padre": {
+            "id": 5,
+            "nombre": "Ciencias Sociales y Historia",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 24,
+        "nombre": "Música",
+        "padre": {
+            "id": 6,
+            "nombre": "Música",
+            "padre": null
+        },
+        "hijos": []
+    },
+    {
+        "id": 25,
+        "nombre": "Artes",
+        "padre": {
+            "id": 7,
+            "nombre": "Artes",
+            "padre": null
+        },
+        "hijos": []
+    }
+]
+
+--asignaturas--
