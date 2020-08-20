@@ -53,7 +53,7 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService>{
 	}
 
 	@PostMapping("/crear-con-foto")
-	public ResponseEntity<?> crearconFoto(@Valid Alumno alumno, BindingResult result, @RequestParam MultipartFile archivo) throws IOException {
+	public ResponseEntity<?> crearConFoto(@Valid Alumno alumno, BindingResult result, @RequestParam MultipartFile archivo) throws IOException {
 		if (!archivo.isEmpty()) {
 			alumno.setFoto(archivo.getBytes());
 		}
