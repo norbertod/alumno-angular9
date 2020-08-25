@@ -22,15 +22,20 @@ public class Alumno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotEmpty
 	private String nombre;
+	
 	@NotEmpty
 	private String apellido;
+	
 	@NotEmpty
 	@Email
 	private String email;
+	
 	@Column(name="create_at")
 	private Date createAt;
+	
 	@Lob
 	@JsonIgnore
 	private byte[] foto;
