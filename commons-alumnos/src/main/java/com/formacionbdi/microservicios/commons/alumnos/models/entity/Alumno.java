@@ -33,7 +33,7 @@ public class Alumno {
 	@Email
 	private String email;
 	
-	@Column(name="create_at")
+	@Column(name = "create_at")
 	private Date createAt;
 	
 	@Lob
