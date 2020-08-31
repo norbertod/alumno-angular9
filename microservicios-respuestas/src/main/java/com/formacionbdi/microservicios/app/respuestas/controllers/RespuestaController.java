@@ -16,7 +16,7 @@ import com.formacionbdi.microservicios.app.respuestas.services.RespuestaService;
 @RestController
 public class RespuestaController {
 
-	@Autowired
+	@Autowired // vemos si funciona
 	private RespuestaService service;
 	
 	@PostMapping

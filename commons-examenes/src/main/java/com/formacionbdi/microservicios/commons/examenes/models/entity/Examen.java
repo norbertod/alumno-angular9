@@ -17,6 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -47,6 +48,9 @@ public class Examen {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull
 	private Asignatura asignatura;
+	
+	@Transient
+	private boolean respondido;
 	
 
 	public Examen() {
@@ -101,15 +105,21 @@ public class Examen {
 		pregunta.setExamen(null);
 		this.preguntas.remove(pregunta);
 	}
-	
-	
-
+		
 	public Asignatura getAsignatura() {
 		return asignatura;
 	}
 
 	public void setAsignaturas(Asignatura asignatura) {
 		this.asignatura = asignatura;
+	}
+	
+	public boolean isRespondido() {
+		return respondido;
+	}
+
+	public void setRespondido(boolean respondido) {
+		this.respondido = respondido;
 	}
 
 	@Override
