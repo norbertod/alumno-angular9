@@ -432,3 +432,52 @@
 ]
 
 --asignaturas--
+-- respuestas --
+[
+    {
+        "texto": "Cristobal Colon",
+        "alumno": {
+            "id": 2,
+            "nombre": "Jhon",
+            "apellido": "Doe",
+            "email": "jhon@gmail.com",
+            "createAt": "2020-08-12T21:31:46.843+00:00",
+            "fotoHashcode": null
+        },
+        "pregunta":  {
+                        "id": 1,
+                        "texto": "quien descubrio centro america"
+                    }
+    },
+    {
+        "texto": "Cusco",
+        "alumno": {
+            "id": 2,
+            "nombre": "Jhon",
+            "apellido": "Doe",
+            "email": "jhon@gmail.com",
+            "createAt": "2020-08-12T21:31:46.843+00:00",
+            "fotoHashcode": null
+        },
+         "pregunta":  {
+                        "id": 3,
+                        "texto": "capital del imperio inca"
+                    }
+    },
+    {
+        "texto": "Tenochtitlan",
+        "alumno": {
+            "id": 2,
+            "nombre": "Jhon",
+            "apellido": "Doe",
+            "email": "jhon@gmail.com",
+            "createAt": "2020-08-12T21:31:46.843+00:00",
+            "fotoHashcode": null
+        },
+         "pregunta":  {
+                        "id": 4,
+                        "texto": "capital del imperio azteca"
+                    }
+    }
+]
+-- respuestas --
