@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.formacionbdi.microservicios.app.cursos.clients.AlumnoFeignClient;
 import com.formacionbdi.microservicios.app.cursos.clients.RespuestaFeignClient;
 import com.formacionbdi.microservicios.app.cursos.models.entity.Curso;
 import com.formacionbdi.microservicios.app.cursos.models.repository.CursoRepository;
+import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.services.CommonServiceImpl;
 
 @Service
@@ -16,6 +18,10 @@ public class CursoServiceImp extends CommonServiceImpl<Curso, CursoRepository> i
 	
 	@Autowired
 	private RespuestaFeignClient client;
+	
+	//nos permite comunicarnos con el microservicio-alumnos
+	@Autowired
+	private AlumnoFeignClient clientAlumno;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -26,6 +32,11 @@ public class CursoServiceImp extends CommonServiceImpl<Curso, CursoRepository> i
 	@Override
 	public Iterable<Long> obtenerExamenesIdsConRespuestasAlumno(Long alumnoId) {
 		return client.obtenerExamenesIdsConRespuestasAlumno(alumnoId);
+	}
+	
+	@Override
+	public Iterable<Alumno> obtenerAlumnosPorCurso(Iterable<Long> ids) {
+		return clientAlumno.obtenerAlumnosPorCurso(ids);
 	}
 
 
