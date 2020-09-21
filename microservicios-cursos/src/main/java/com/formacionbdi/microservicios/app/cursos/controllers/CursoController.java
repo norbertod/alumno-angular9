@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formacionbdi.microservicios.app.cursos.models.entity.Curso;
+import com.formacionbdi.microservicios.app.cursos.models.entity.CursoAlumno;
 import com.formacionbdi.microservicios.app.cursos.services.CursoService;
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
 import com.formacionbdi.microservicios.commons.controllers.CommonController;
@@ -29,6 +30,22 @@ public class CursoController extends CommonController<Curso, CursoService> {
 	
 	@Value("${config.balanceador.test}")
 	private String balanceadorTest;
+	
+	@GetMapping
+	@Override
+	//Obtiene la lista de cursos y le asigna objetos alumnos con el id del cursoAlumno
+	public ResponseEntity<?> listar(){
+		List<Curso> cursos = ((List<Curso>) service.findAll()).stream().map(c ->{
+			c.getCursoAlumnos().forEach(ca ->{
+				Alumno alumno  = new Alumno();
+				alumno.setId(ca.getAlumnoId());
+				c.addAlumno(alumno);
+			});
+			return c;
+		}).collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(cursos);
+	}
 	
 	@GetMapping("/balanceador-test")
 	public ResponseEntity<?> balanceadorTest() {
@@ -57,37 +74,42 @@ public class CursoController extends CommonController<Curso, CursoService> {
 	}
 
 	@PutMapping("/{id}/asignar-alumnos")
-	public ResponseEntity<?> asignarAlumnos(@RequestBody List<Alumno> alumnos, @PathVariable Long id) {
-		Optional<Curso> o = this.service.findById(id);
-		if (!o.isPresent()) {
-			ResponseEntity.notFound().build();
-		}
-		Curso dbCurso = o.get();
-
-		alumnos.forEach(a -> {
-			dbCurso.addAlumno(a);
-		});
-		return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(dbCurso)); // status created 201
+	public ResponseEntity<?> asignarAlumnos(@RequestBody List<Alumno> alumnos, @PathVariable Long id){
+	    Optional<Curso> o = this.service.findById(id);
+	    if(!o.isPresent()) {
+	    	return ResponseEntity.notFound().build();
+	    }
+	    Curso dbCurso = o.get();
+	    
+	    alumnos.forEach(a -> {
+	    	CursoAlumno cursoAlumno = new CursoAlumno();
+	    	cursoAlumno.setAlumnoId(a.getId());
+	    	cursoAlumno.setCurso(dbCurso);
+	    	dbCurso.addCursoAlumno(cursoAlumno);
+	    });
+	    
+	    return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(dbCurso));
+		//return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(dbCurso)); // status created 201
 
 	}
 
 	@PutMapping("/{id}/eliminar-alumno")
-	public ResponseEntity<?> eliminarAlumno(@RequestBody Alumno alumno, @PathVariable Long id) {
-		Optional<Curso> o = this.service.findById(id);
-		if (!o.isPresent()) {
-			ResponseEntity.notFound().build();
-		}
-		Curso dbCurso = o.get();
-
-		dbCurso.removeAlumnos(alumno);
-
-		return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(dbCurso)); // status created 201
-
+	public ResponseEntity<?> eliminarAlumno(@RequestBody Alumno alumno, @PathVariable Long id){
+	    Optional<Curso> o = this.service.findById(id);
+	    if(!o.isPresent()) {
+	    	return ResponseEntity.notFound().build();
+	    }
+	    Curso dbCurso = o.get();
+	    CursoAlumno cursoAlumno = new CursoAlumno();
+	    cursoAlumno.setAlumnoId(alumno.getId());
+	    dbCurso.removeCursoAlumno(cursoAlumno);
+	    
+	    return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(dbCurso));
 	}
 
 	@GetMapping("/alumno/{id}")
 	public ResponseEntity<?> buscarPorAlumnoId(@PathVariable Long id) {
-		Curso curso = service.findCursoByCursoId(id);
+		Curso curso = service.findCursoByAlumnoId(id);
 
 		if (curso != null) {
 			List<Long> examenesIds = (List<Long>) service.obtenerExamenesIdsConRespuestasAlumno(id);

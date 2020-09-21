@@ -19,8 +19,8 @@ public class CursoServiceImp extends CommonServiceImpl<Curso, CursoRepository> i
 
 	@Override
 	@Transactional(readOnly = true)
-	public Curso findCursoByCursoId(Long id) {
-		return repository.findCursoByCursoId(id);
+	public Curso findCursoByAlumnoId(Long id) {
+		return repository.findCursoByAlumnoId(id);
 	}
 
 	@Override
