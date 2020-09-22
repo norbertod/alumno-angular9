@@ -60,8 +60,11 @@ public class RespuestaServiceImpl implements RespuestaService {
 		List<Respuesta> respuestasAlumno = (List<Respuesta>) repository.findByAlumnoId(alumnoId);
 		List<Long> examenIds = Collections.emptyList();
 		
+		//si el alumno tiene respuesta
 		if(respuestasAlumno.size() > 0) {
+			//obtiene todas las pretuntas de las repuestas del alumno
 		  List<Long> preguntaIds = respuestasAlumno.stream().map(r -> r.getPreguntaId()).collect(Collectors.toList());
+		  //obtiene la lista de id de examens con respuestas
 		  examenIds = examenClient.obtenerExamenesIdsPorPreguntasIdRespondidas(preguntaIds);
 		}
 		
