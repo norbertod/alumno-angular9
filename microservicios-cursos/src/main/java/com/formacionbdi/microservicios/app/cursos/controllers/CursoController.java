@@ -162,16 +162,16 @@ public class CursoController extends CommonController<Curso, CursoService> {
 
 		if (curso != null) {
 			List<Long> examenesIds = (List<Long>) service.obtenerExamenesIdsConRespuestasAlumno(id);
+			if (examenesIds != null && examenesIds.size() > 0) {
+				List<Examen> examenes = curso.getExamenes().stream().map(examen -> {
+					if (examenesIds.contains(examen.getId())) {
+						examen.setRespondido(true);
+					}
+					return examen;
+				}).collect(Collectors.toList());
 
-			List<Examen> examenes = curso.getExamenes().stream().map(examen -> {
-				if (examenesIds.contains(examen.getId())) {
-					examen.setRespondido(true);
-				}
-				return examen;
-			}).collect(Collectors.toList());
-
-			curso.setExamenes(examenes);
-		
+				curso.setExamenes(examenes);
+			}		
 		}
 
 		return ResponseEntity.ok(curso);

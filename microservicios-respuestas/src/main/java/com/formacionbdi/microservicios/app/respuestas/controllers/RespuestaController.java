@@ -23,11 +23,17 @@ public class RespuestaController {
 	
 	@PostMapping
 	public ResponseEntity<?> crear(@RequestBody Iterable<Respuesta> respuestas){
+		//a las respuestas pasadas como parametro 
 		respuestas = ((List<Respuesta>)respuestas).stream().map(r -> {
+			//se llena el atributo alumnoId con e id del alumno que viene en la respuesta
 			r.setAlumnoId(r.getAlumno().getId());
+			//se llena el atributo PreguntaId con e id de la pregunta que viene en la respuesta
+			r.setPreguntaId(r.getPregunta().getId());
 			return r;
 		}).collect(Collectors.toList());
+		//se persiste las respustas
 		Iterable<Respuesta> respuestasDb = service.saveAll(respuestas);
+		//se pasa al body las respuesa de la base de datos
 		return ResponseEntity.status(HttpStatus.CREATED).body(respuestasDb);
 	}
 	
@@ -39,7 +45,7 @@ public class RespuestaController {
 	
 	@GetMapping("/alumno/{alumnoId}/examenes-respondidos")
 	public ResponseEntity<?> obtenerExamenesIdsConRespuestasAlumno(@PathVariable Long alumnoId){
-		Iterable<Long> examenesIds = service.findExamenesIdsConRespuestaByAlumno(alumnoId);
+		Iterable<Long> examenesIds = service.findExamenesIdsConRespuestasByAlumno(alumnoId);
 		return ResponseEntity.ok(examenesIds);
 	}
 	
