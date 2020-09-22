@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.formacionbdi.microservicios.app.respuestas.clients.ExamenFeignClient;
 import com.formacionbdi.microservicios.app.respuestas.models.entity.Respuesta;
 import com.formacionbdi.microservicios.app.respuestas.models.repository.RespuestaRepository;
-import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
-import com.formacionbdi.microservicios.commons.examenes.models.entity.Pregunta;
+//import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
+//import com.formacionbdi.microservicios.commons.examenes.models.entity.Pregunta;
 
 @Service
 public class RespuestaServiceImpl implements RespuestaService {
@@ -32,6 +32,7 @@ public class RespuestaServiceImpl implements RespuestaService {
 
 	@Override
 	public Iterable<Respuesta> findRespuestaByAlumnoByExamen(Long alumnoId, Long examenId) {
+		/*
 		//buscar el examen por su id en el microservicio examenes que trabaja con MYSQL
 		Examen examen = examenClient.obtenerExamenPorId(examenId);
 		//del examen obtenido saco las preguntas
@@ -50,14 +51,15 @@ public class RespuestaServiceImpl implements RespuestaService {
 				}
 			});
 			return r;
-		}).collect(Collectors.toList());
+		}).collect(Collectors.toList());*/
 				
+		List<Respuesta> respuestas = (List<Respuesta>) repository.findRespuestaByAlumnoByExamen(alumnoId, examenId);
 		return respuestas;
 	}
 
 	@Override
 	public Iterable<Long> findExamenesIdsConRespuestasByAlumno(Long alumnoId) {
-		List<Respuesta> respuestasAlumno = (List<Respuesta>) repository.findByAlumnoId(alumnoId);
+		/*List<Respuesta> respuestasAlumno = (List<Respuesta>) repository.findByAlumnoId(alumnoId);
 		List<Long> examenIds = Collections.emptyList();
 		
 		//si el alumno tiene respuesta
@@ -68,7 +70,18 @@ public class RespuestaServiceImpl implements RespuestaService {
 		  examenIds = examenClient.obtenerExamenesIdsPorPreguntasIdRespondidas(preguntaIds);
 		}
 		
+		return examenIds;*/
+		
+		List<Respuesta> respuestasAlumno = (List<Respuesta>) repository.findExamenesIdsConRespuestasByAlumno(alumnoId);
+		List<Long> examenIds = respuestasAlumno
+				.stream()
+				.map(r -> r.getPregunta().getExamen().getId())
+				.distinct()
+				.collect(Collectors.toList());
+		
 		return examenIds;
+		
+		
 	}
 
 	@Override
