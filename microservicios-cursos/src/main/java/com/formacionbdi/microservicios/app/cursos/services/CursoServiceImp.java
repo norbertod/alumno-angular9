@@ -34,6 +34,7 @@ public class CursoServiceImp extends CommonServiceImpl<Curso, CursoRepository> i
 		return client.obtenerExamenesIdsConRespuestasAlumno(alumnoId);
 	}
 	
+	//en este metodo usamos el cliente feign comunicandonos con el microservicio alumnos
 	@Override
 	public Iterable<Alumno> obtenerAlumnosPorCurso(Iterable<Long> ids) {
 		return clientAlumno.obtenerAlumnosPorCurso(ids);
