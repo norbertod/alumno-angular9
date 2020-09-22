@@ -26,6 +26,7 @@ import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 public class ExamenController extends CommonController<Examen, ExamenService> {
 	
 	@GetMapping("/respondidos-por-preguntas")
+	//(@RequestParam List<Long> preguntaIds) cuando se utiliza @RequestParam elegis List y no Iterable
 	public ResponseEntity<?> obtenerExamenesIdsPorPreguntasIdRespondidas(@RequestParam List<Long> preguntaIds){
 		return ResponseEntity.ok().body(service.findExamenesIdsConRespuestasByPreguntaIds(preguntaIds));
 	}
