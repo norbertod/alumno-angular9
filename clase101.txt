@@ -1,0 +1,56 @@
+[
+    {
+        "texto": "Cristobal Colon",
+        "alumno": {
+            "id": 2,
+            "nombre": "Jhon",
+            "apellido": "Doe",
+            "email": "jhon@gmail.com",
+            "createAt": "2020-08-13T00:31:46.843+00:00",
+            "fotoHashcode": null
+        },
+        "pregunta": {
+            "id": 1,
+            "texto": "quien descubrio centro america",
+            "examen": {
+                "id": 1
+            }
+        }
+    },
+    {
+        "texto": "Cuzco",
+        "alumno": {
+            "id": 2,
+            "nombre": "Jhon",
+            "apellido": "Doe",
+            "email": "jhon@gmail.com",
+            "createAt": "2020-08-13T00:31:46.843+00:00",
+            "fotoHashcode": null
+        },
+        "pregunta": {
+            "id": 3,
+            "texto": "capital del imperio inca",
+            "examen": {
+                "id": 1
+            }
+        }
+    },
+    {
+        "texto": "Tenochtitlan",
+        "alumno": {
+            "id": 2,
+            "nombre": "Jhon",
+            "apellido": "Doe",
+            "email": "jhon@gmail.com",
+            "createAt": "2020-08-13T00:31:46.843+00:00",
+            "fotoHashcode": null
+        },
+        "pregunta": {
+            "id": 4,
+            "texto": "capital del imperio azteca",
+            "examen": {
+                "id": 1
+            }
+        }
+    }
+]
