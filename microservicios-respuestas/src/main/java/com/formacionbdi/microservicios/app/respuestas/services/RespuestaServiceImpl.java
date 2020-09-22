@@ -29,7 +29,7 @@ public class RespuestaServiceImpl implements RespuestaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Iterable<Long> findExamenesIdsConRespuestaByAlumno(Long alumnoId) {
-		return repository.findExamenesIdsConRespuestaByAlumno(alumnoId);
+		return repository.findExamenesIdsConRespuestasByAlumno(alumnoId);
 	}
 	
 }
