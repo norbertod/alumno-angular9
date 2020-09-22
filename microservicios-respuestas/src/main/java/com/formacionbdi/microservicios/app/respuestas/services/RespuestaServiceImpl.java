@@ -20,8 +20,8 @@ public class RespuestaServiceImpl implements RespuestaService {
 	@Autowired
 	private RespuestaRepository repository;
 	
-	@Autowired
-	private ExamenFeignClient examenClient;
+	//@Autowired
+	//private ExamenFeignClient examenClient;
 
 	@Override
 	@Transactional
