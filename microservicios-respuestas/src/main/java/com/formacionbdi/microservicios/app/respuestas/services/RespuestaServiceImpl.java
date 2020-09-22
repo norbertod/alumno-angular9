@@ -1,6 +1,6 @@
 package com.formacionbdi.microservicios.app.respuestas.services;
 
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.formacionbdi.microservicios.app.respuestas.clients.ExamenFeignClient;
+//import com.formacionbdi.microservicios.app.respuestas.clients.ExamenFeignClient;
 import com.formacionbdi.microservicios.app.respuestas.models.entity.Respuesta;
 import com.formacionbdi.microservicios.app.respuestas.models.repository.RespuestaRepository;
 //import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
